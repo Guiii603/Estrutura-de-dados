@@ -28,11 +28,15 @@ int comparacao_de_letras(char a[], char b[], int i){
 int main (){
 	
 	char nome[20] = "Guilherme Oechsler";
-	char nome2[20] = "jose Mateus"; 
+	char nome2[20] = "jose matheus"; 
 	int letra;
 	int aux, aux2;
 	
 	 printf("Ordem alfabetica pelo nome");
+	 letra = -1;
+	do{
+	letra++;
+	}while(nome[letra] == nome2[letra]);
 	 if(nome[letra]>nome2[letra]){
 	 	printf("\n\t%s\n\t%s", nome2, nome);
 	 }else{
@@ -43,6 +47,13 @@ int main (){
 	split(nome2, &aux2);
 
 	 printf("\n\nOrdem alfabetica pelo sobrenome");
+	 
+	 
+	do{
+	aux++;
+	aux2++;
+	}while(nome[aux] == nome2[aux2]);
+	 
 	 if(nome[aux]>nome2[aux2]){
 	 	printf("\n\t%s\n\t%s", nome2, nome);
 	 }else{
