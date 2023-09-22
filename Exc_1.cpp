@@ -16,15 +16,24 @@ int split(char a[], int *aux){
 	}
 }
 
+int comparacao_de_letras(char a[], char b[], int i){
+	i = -1;
+	do{
+	i++;
+	}while(a[i] == b[i]);		
+	
+} 
+
+
 int main (){
 	
 	char nome[20] = "Guilherme Oechsler";
-	char nome2[20] = "Jose Mateus"; 
-	int first = 0;
+	char nome2[20] = "jose Mateus"; 
+	int letra;
 	int aux, aux2;
 	
 	 printf("Ordem alfabetica pelo nome");
-	 if(nome[first]>nome2[first]){
+	 if(nome[letra]>nome2[letra]){
 	 	printf("\n\t%s\n\t%s", nome2, nome);
 	 }else{
 	 	printf("\n\t%s\n\t%s", nome, nome2);
@@ -39,4 +48,6 @@ int main (){
 	 }else{
 	 	printf("\n\t%s\n\t%s", nome, nome2);
 	 }
+	 
+	 
 }
