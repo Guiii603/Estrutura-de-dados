@@ -16,34 +16,6 @@ int split(char a[], int *aux){
 	}
 }
 
-int comparacao_de_letras(char a[], char b[], int *i){
-	*i = -1;
-	do{
-	*i++;
-	}while(a[*i] == b[*i]);	
-} 
-
-	void separa_nome(char a[]) {
-    int i = 0;
-    while(a[i] != ' '){
-        printf("%c", a[i]);
-        i++;
-    }
-}
-
-int valor_posicao_nome(char a[], char *s[]){
-	int j = 0;
-	int i = 0;
-	do{
-		*s[j+1] = a[i];
-		i++;
-		
-	}while(a[i] != ' ' && i < 20);
-
-	
-}
-
-
 int busca_posicao_letra_diferente(char a[], char b[]){
 	
 	for(int i=0;i<20;i++){
@@ -53,43 +25,66 @@ int busca_posicao_letra_diferente(char a[], char b[]){
 	}
 	return -1;
 }
-	
 
+int separa_nome(char a[], char b[]){
+	int i = 0;
+	while(a[i] != ' '){
+		b[i] = a[i];
+		i++;
+	}
+}
+
+int separa_sobrenome(char a[], char b[]){
+	
+	int aux, i=0;
+	
+	split(a, &aux);
+	
+	
+	while(a[aux] != ' '){
+		b[i] = a[aux];
+		aux++;
+		i++;
+	}
+}
+	
 int main (){
 
-	char nome[20] = "Guilherme Oechsler";
-	char nome2[20] = "Keyla Rubia"; 
+	char nome[20] = "guilherme oechsler";
+	char nome2[20] = "keyla rubia"; 
 	char string[20];
+	char string2[20];
 	int letra;
 	int aux, aux2;
-
+	
+	
+	separa_nome(nome, string);
+	separa_nome(nome2, string2);
+	
 	 printf("Ordem alfabetica pelo nome");
-	 letra = -1;
-	do{
-	letra++;
-	}while(nome[letra] == nome2[letra]);
-	 if(nome[letra]>nome2[letra]){
+	 
+	letra = busca_posicao_letra_diferente(nome, nome2);
+	
+	 if(string[letra]>string2[letra]){
 	 	printf("\n\t%s\n\t%s", nome2, nome);
 	 }else{
 	 	printf("\n\t%s\n\t%s", nome, nome2);
 	 }
 
-	split(nome, &aux);
-	split(nome2, &aux2);
-
-	 printf("\n\nOrdem alfabetica pelo sobrenome");
-	 
-	 
-	do{
-	aux++;
-	aux2++;
-	}while(nome[aux] == nome2[aux2]);
-	 
-	 if(nome[aux]>nome2[aux2]){
-	 	printf("\n\t%s\n\t%s", nome2, nome);
-	 }else{
-	 	printf("\n\t%s\n\t%s", nome, nome2);
-	 }
-	 
+//	split(nome, &aux);
+//	split(nome2, &aux2);
+//
+//	 printf("\n\nOrdem alfabetica pelo sobrenome"); 
+//	 
+//	do{
+//	aux++;
+//	aux2++;
+//	}while(nome[aux] == nome2[aux2]);
+//	 
+//	 if(nome[aux]>nome2[aux2]){
+//	 	printf("\n\t%s\n\t%s", nome2, nome);
+//	 }else{
+//	 	printf("\n\t%s\n\t%s", nome, nome2);
+//	 }
 	 
 }
