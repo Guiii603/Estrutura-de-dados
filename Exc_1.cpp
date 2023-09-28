@@ -1,20 +1,12 @@
-/*Exe_01.Faça umalgoritmo que leia dois nomes completos, contendoapenas um nomee um sobrenome. O programa deve exibir os nomes completosda seguinte forma:
+/*Exe_01.Faça umalgoritmo utilizando o minimo de bibliotecas possivel,
+ que leia dois nomes completos, contendoapenas um nomee um sobrenome. 
+ O programa deve exibir os nomes completosda seguinte forma:
 
 a)Ordenados alfabeticamente pelo nome.
 
 b)Ordenados alfabeticamente pelo sobrenome.
 */
 #include <stdio.h>
-
-int split(char a[], int *aux){
-	int i;
-	*aux = 1;
-	 for(i=0;i<20;i++){
-	if(a[i] == ' '){
-	*aux=*aux+i;
-		}
-	}
-}
 
 int busca_posicao_letra_diferente(char a[], char b[]){
 	
@@ -34,29 +26,31 @@ int separa_nome(char a[], char b[]){
 	}
 }
 
-int separa_sobrenome(char a[], char b[]){
+char separa_sobrenome(char a[], char b[]){
 	
-	int aux, i=0;
+	int i=-1;
+	int aux = 0;
 	
-	split(a, &aux);
+	 do{
+	 	i++;
+	 }while(a[i] != ' ' );
 	
+	do{
+	i++;
+	b[aux] = a[i];
+	aux++;		 
+	 } while(a[i] != ' ' && a[i] != '\0');
+}
+
+int compara_ordem_alfabetica(){
 	
-	while(a[aux] != ' '){
-		b[i] = a[aux];
-		aux++;
-		i++;
-	}
 }
 	
-int main (){
+int main(){
 
-	char nome[20] = "guilherme oechsler";
-	char nome2[20] = "keyla rubia"; 
-	char string[20];
-	char string2[20];
-	int letra;
-	int aux, aux2;
-	
+	char nome[50] = "guilherme oechsler", nome2[50] = "keyla rubia";
+	char string[50], sobrenome[50], string2[50], sobrenome2[50];
+	int letra, letra2, aux, aux2;
 	
 	separa_nome(nome, string);
 	separa_nome(nome2, string2);
@@ -71,20 +65,17 @@ int main (){
 	 	printf("\n\t%s\n\t%s", nome, nome2);
 	 }
 
-//	split(nome, &aux);
-//	split(nome2, &aux2);
-//
-//	 printf("\n\nOrdem alfabetica pelo sobrenome"); 
-//	 
-//	do{
-//	aux++;
-//	aux2++;
-//	}while(nome[aux] == nome2[aux2]);
-//	 
-//	 if(nome[aux]>nome2[aux2]){
-//	 	printf("\n\t%s\n\t%s", nome2, nome);
-//	 }else{
-//	 	printf("\n\t%s\n\t%s", nome, nome2);
-//	 }
+	 printf("\n\nOrdem alfabetica pelo sobrenome"); 
+	 
+	separa_sobrenome(string, sobrenome);
+	separa_sobrenome(string2, sobrenome2);
+	
+	letra2 = busca_posicao_letra_diferente(sobrenome, sobrenome2);
+
+	 if(sobrenome[letra2]>sobrenome2[letra2]){
+	 	printf("\n\t%s\n\t%s", nome2, nome);
+	 }else{
+	 	printf("\n\t%s\n\t%s", nome, nome2);
+	 }
 	 
 }
